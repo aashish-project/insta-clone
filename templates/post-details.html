@@ -1,0 +1,21 @@
+<img src="{{post.picture.url}}" alt="picture" srcset="">
+<br>
+number of like {{post.like}}
+<br>
+caption {{post.caption}}
+<br>
+date: {{post.posted|date:"d M,Y"}}
+<br>
+Hastags : 
+{% for tag in post.tag.all %} 
+#{{tag}}
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Comment</button>
+</form>
+
+{% for comment in comments %}
+    comment = {{comment.body}} date={{comment.date|date:"d M Y"}} user={{comment.user.username}}
+{% endfor %}

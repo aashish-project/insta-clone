@@ -1,0 +1,17 @@
+{% comment %} user={{user}}
+
+{% for d in directs %}
+sender={{d.sender}}
+reciever={{d.reciever}}
+date={{d.date}}
+is_read={{is_read}}
+messages={{d.body}}
+{% endfor %}
+active_direct={{active_direct}}
+ {% endcomment %}
+
+
+
+ {% for d in directs %}
+   <a href="{% url 'direct_message' d.reciever.username %}">{{d.reciever}}</a><br>
+ {% endfor %}

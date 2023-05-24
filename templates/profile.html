@@ -1,0 +1,107 @@
+<img src="{{profile.picture.url}}" style="height: 381px; object-fit: cover" />
+<br />
+
+name={{profile.first_name|title}} {{profile.last_name|title}}
+{% if follow_status %}
+  unfollow
+  {{profile.user.username}}
+  <a href="{% url 'follow' profile.user.username 0 %}"> unfollow </a>
+  {% else %}
+  follow
+  <a href="{% url 'follow' profile.user.username 1 %}"> follow </a>
+{% endif %}
+<br />
+website=<a href="{{profile.url}}"
+  >{{profile.url}}<a>
+    <br />
+    location={{profile.location}}
+    <br />
+    bio={{profile.bio}}
+    <br />
+    created={{profile.created}}
+    <br />
+    post count={{post_count}}
+    <br>
+    follower = {{followers_count}}
+    <br>
+    following = {{following_count}}
+    <br>
+    {% if url_name == 'profile' %}
+    <a href="{% url 'favourite' profile.user %}">
+        favourite
+    </a>
+    <br>
+    post={{post}}
+    {% else %}
+    <a href="{% url 'profile' profile.user %}">
+        post
+    </a>
+    <br>
+    favourite=
+    {% endif %}
+    <br />
+    <style>
+      .image-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .image-container:hover .overlay {
+        opacity: 0.9;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.5s ease;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+
+      .overlay span {
+        font-size: 1.2em;
+        margin-bottom: 1em;
+        color: white;
+        text-shadow: 1px 1px 2px black;
+      }
+
+      .overlay a {
+        display: inline-block;
+        background-color: white;
+        color: black;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+    </style>
+    {% for post in posts %}
+    <div class="image-container">
+      <a href="{{post.get_absolute_url}}">
+        <img
+          src="{{post.picture.url}}"
+          alt="{{post.picture.url}}"
+          style="height: 381px; object-fit: cover"
+        />
+        <div class="overlay">
+          <span>Like: {{post.like}}</span>
+          {% for tag in post.tag.all %}
+          <a href="#">#{{tag}}</a>
+          {% endfor %}
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </a></a
+>

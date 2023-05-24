@@ -1,0 +1,9 @@
+{% for message in messages  %}
+    {% if message.sender == request.user %}
+        <b>{{message.body}}</b>
+        <br>
+        {% else %}
+        <p>{{message.body}}<p>
+        <br>
+    {% endif %}
+{% endfor %}

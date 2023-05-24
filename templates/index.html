@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>POST</h1>
+    {% for post in post_items %}
+    <br>
+        <div>username is  {{post.user.username}}</div>
+        <a href="{% url 'save' post.id %}">
+            save
+        </a>
+        <a href="{% url 'post-detail' post.id %}">
+            <img src="media/{{post.picture}}" alt="{{post.picture}}" style="height:381px;object-fit: cover;">
+        </a>
+
+        <div>caption is {{post.caption}}</div>
+        <div>date is {{post.posted|date:"d M Y"}}</div>
+        <a href="{% url 'like' post.id %}">
+            <div>like is {{post.like}}</div>
+        </a>
+        <br>
+        {% for tag in post.tag.all %} 
+            <span> #{{tag}}</span>
+        {% endfor %}
+    {% endfor %}
+    <br>
+</body>
+</html>
