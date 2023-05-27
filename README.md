@@ -3,7 +3,7 @@ This is a clone of the popular social media platform Instagram, built using the 
 
 ## Features
 1. User registration and authentication
-2. Posting photos and videos
+2. Posting photos
 3. Following and unfollowing users
 4. Liking and commenting on posts
 5. User profiles and explore page
@@ -16,8 +16,8 @@ This is a clone of the popular social media platform Instagram, built using the 
 3. HTML
 4. CSS
 ## Setup and Installation
-1. Clone the repository: git clone https://github.com/your-username/instagram-clone.git
-2. Navigate to the project directory: cd instagram-clone
+1. Clone the repository: git clone 'https://github.com/aashish-project/insta-clone.git'
+2. Navigate to the project directory: cd insta-clone
 3. Create and activate a virtual environment (optional):
 4. Create: python3 -m venv myenv
 5. Activate (Unix-based systems): source myenv/bin/activate
